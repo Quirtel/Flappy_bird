@@ -14,11 +14,6 @@ class player {
 		Sprite sprite; //текстурка
 		float current_frame; //текущий фрейм
 
-
-
-
-
-
 	player(Texture &image){
 		sprite.setTexture(image);
 		sprite.setTextureRect(IntRect(3,5,20,17));
@@ -52,7 +47,6 @@ class player {
 void main () {
 
 	RenderWindow window (VideoMode(100, 100), "Flappy Red");
-
 
 	Texture t;
 	t.loadFromFile("FLAPPYRED.png");

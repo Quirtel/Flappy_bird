@@ -4,8 +4,8 @@ using namespace sf;
 
 int ground = 350;
 
-const int H = 17;
-const int W = 149;
+const int H = 16;
+const int W = 148;
 
 class player {
 
@@ -18,7 +18,7 @@ public:
 
 	player(Texture &image){
 		sprite.setTexture(image);
-		sprite.setTextureRect(IntRect(3,5,20,17));
+		sprite.setTextureRect(IntRect(3,5,19,15));
 		rect = FloatRect(0,0,0,0);
 		dx=0;
 		dy=0;
@@ -26,32 +26,26 @@ public:
 	}
 
 	void update(float time){
-		rect.left += dx*time;
-
-		if (!on_ground){ dy = dy + 0.0005 * time;}
-
+		dx = 0.008; // скорость перемещения
+		rect.left += dx*time; // постоянное перемещение вправо
+		
+		// гравитация
+		dy = dy + 0.00005 * time;
 		rect.top += dy*time;
-		on_ground = false;
 
+		// не даёт выйти за платформу
 		if(rect.top > ground) {
 			rect.top = ground;
 			dy = 0;
 			on_ground = true;
 		}
 
+		// вывод
 		sprite.setPosition(rect.left, rect.top);
-
-		dx = 0;
 	}
 };
 
-
-
-void main () {
-
-	RenderWindow window (VideoMode(600, 400), "Flappy Bird");
-
-	String TileMap[H] = {
+String TileMap[H] = {
 	"00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
 	"0                                                                                                                                                   0",
 	"0             0                                                                                                                                     0",
@@ -68,8 +62,12 @@ void main () {
 	"0                                                                                                                                                   0",
 	"PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP",
 	"PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP",
-	"PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP",
 }; 
+
+
+void main () {
+
+	RenderWindow window (VideoMode(600,400), "Flappy Bird");  
 
 	Texture t;
 	t.loadFromFile("FLAPPYRED.png");
@@ -94,12 +92,9 @@ void main () {
 				window.close(); }
 		}
 
-		if (Keyboard::isKeyPressed(Keyboard::Right)){
-			bird.dx = 0.1;
-		}
 
 		if (Keyboard::isKeyPressed(Keyboard::Up)){
-			bird.dy = -0.2; bird.on_ground = false;
+			bird.dy = -0.01;
 		}
 
 		bird.update(time);
@@ -109,14 +104,14 @@ void main () {
 		for (int i=0; i<H;i++){
 			for (int j=0; j<W;j++) {
 
-				if (TileMap[i][j] == '0') 
-					rectangle.setFillColor(sf::Color::Black);
-				if (TileMap[i][j] == 'Р') 
-					rectangle.setFillColor(sf::Color::Red);
-				if (TileMap[i][j] == ' ') 
-					continue;
+				if (TileMap[i][j] == '0'){ 
+					rectangle.setFillColor(sf::Color::Black);}
+				if (TileMap[i][j] == 'Р') {
+					rectangle.setFillColor(sf::Color::Red);}
+				if (TileMap[i][j] == ' ') {
+					continue;}
 
-				rectangle.setPosition(j*32,i*32);
+				rectangle.setPosition(j*10,i*10);
 				window.draw(rectangle);
 			}
 

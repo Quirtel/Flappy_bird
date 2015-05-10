@@ -5,18 +5,18 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Flappy_bird", "Flappy_bird\
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Daniil|Win32 = Daniil|Win32
+		Daniil159x|Win32 = Daniil159x|Win32
 		Debug|Win32 = Debug|Win32
 		Raiden|Win32 = Raiden|Win32
 		Release|Win32 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{7CE01247-8A08-4E10-A937-FBFE19593514}.Daniil|Win32.ActiveCfg = Raiden|Win32
-		{7CE01247-8A08-4E10-A937-FBFE19593514}.Daniil|Win32.Build.0 = Raiden|Win32
-		{7CE01247-8A08-4E10-A937-FBFE19593514}.Debug|Win32.ActiveCfg = Debug|Win32
-		{7CE01247-8A08-4E10-A937-FBFE19593514}.Debug|Win32.Build.0 = Debug|Win32
-		{7CE01247-8A08-4E10-A937-FBFE19593514}.Raiden|Win32.ActiveCfg = Raiden|Win32
-		{7CE01247-8A08-4E10-A937-FBFE19593514}.Raiden|Win32.Build.0 = Raiden|Win32
+		{7CE01247-8A08-4E10-A937-FBFE19593514}.Daniil159x|Win32.ActiveCfg = Daniil159x|Win32
+		{7CE01247-8A08-4E10-A937-FBFE19593514}.Daniil159x|Win32.Build.0 = Daniil159x|Win32
+		{7CE01247-8A08-4E10-A937-FBFE19593514}.Debug|Win32.ActiveCfg = Daniil159x|Win32
+		{7CE01247-8A08-4E10-A937-FBFE19593514}.Debug|Win32.Build.0 = Daniil159x|Win32
+		{7CE01247-8A08-4E10-A937-FBFE19593514}.Raiden|Win32.ActiveCfg = Debug|Win32
+		{7CE01247-8A08-4E10-A937-FBFE19593514}.Raiden|Win32.Build.0 = Debug|Win32
 		{7CE01247-8A08-4E10-A937-FBFE19593514}.Release|Win32.ActiveCfg = Release|Win32
 		{7CE01247-8A08-4E10-A937-FBFE19593514}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection

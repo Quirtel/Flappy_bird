@@ -2,23 +2,26 @@
 
 using namespace sf;
 
-int ground = 90;
+int ground = 350;
 
+const int H = 17;
+const int W = 149;
 
 class player {
 
-	public:
-		float dx, dy;
-		FloatRect rect;
-		bool on_ground; //где игрок: земля - воздух
-		Sprite sprite; //текстурка
-		float current_frame; //текущий фрейм
+public:
+	float dx, dy;
+	FloatRect rect;
+	bool on_ground; //где игрок: земля - воздух
+	Sprite sprite; //текстурка
+	float current_frame; //текущий фрейм
 
 	player(Texture &image){
 		sprite.setTexture(image);
 		sprite.setTextureRect(IntRect(3,5,20,17));
 		rect = FloatRect(0,0,0,0);
-		dx=dy=0;
+		dx=0;
+		dy=0;
 		current_frame = 0;
 	}
 
@@ -46,7 +49,27 @@ class player {
 
 void main () {
 
-	RenderWindow window (VideoMode(100, 100), "Flappy Red");
+	RenderWindow window (VideoMode(600, 400), "Flappy Bird");
+
+	String TileMap[H] = {
+	"00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+	"0                                                                                                                                                   0",
+	"0             0                                                                                                                                     0",
+	"0                                                                                                                                                   0",
+	"0                                                                                                                                                   0",
+	"0                                                                                                                                                   0",
+	"0                                  P                                                                                                                0",
+	"0                                                                                                                                                   0",
+	"0                                                                                                                                                   0",
+	"0                                                                                                                                                   0",
+	"0                                                                                                                                                   0",
+	"0                                                                                                                                                   0",
+	"0                                                                                                                                                   0",
+	"0                                                                                                                                                   0",
+	"PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP",
+	"PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP",
+	"PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP",
+}; 
 
 	Texture t;
 	t.loadFromFile("FLAPPYRED.png");
@@ -55,16 +78,18 @@ void main () {
 
 	Clock clock;
 
+	RectangleShape rectangle;
+
 	while (window.isOpen()){
 
 		float time = clock.getElapsedTime().asMicroseconds();
 		clock.restart();
 
-		time = time/700;
+		time = time/900;
 
 		Event event;
 		while (window.pollEvent(event)){
-			
+
 			if (event.type == Event::Closed){ 
 				window.close(); }
 		}
@@ -72,15 +97,31 @@ void main () {
 		if (Keyboard::isKeyPressed(Keyboard::Right)){
 			bird.dx = 0.1;
 		}
-		
+
 		if (Keyboard::isKeyPressed(Keyboard::Up)){
-			if (bird.on_ground) {bird.dy = -0.4; bird.on_ground = false;}
+			bird.dy = -0.2; bird.on_ground = false;
 		}
 
-
 		bird.update(time);
+		window.clear(Color::White);
 
-		window.clear();
+
+		for (int i=0; i<H;i++){
+			for (int j=0; j<W;j++) {
+
+				if (TileMap[i][j] == '0') 
+					rectangle.setFillColor(sf::Color::Black);
+				if (TileMap[i][j] == 'Р') 
+					rectangle.setFillColor(sf::Color::Red);
+				if (TileMap[i][j] == ' ') 
+					continue;
+
+				rectangle.setPosition(j*32,i*32);
+				window.draw(rectangle);
+			}
+
+		}
+		
 		window.draw(bird.sprite);
 		window.display();
 	}

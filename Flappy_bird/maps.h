@@ -5,9 +5,11 @@
 using namespace sf;
 
 const int H = 23; // высота
-const int W = 54; // длина
+const int W = 53; // длина
 
 const int num_maps = 1;
+bool detection_pipe;
+bool detection_pipe_old = false;
 
 /*
 		Q = 149,105,12,12 - граница платформы
@@ -22,29 +24,29 @@ const int num_maps = 1;
 */
 
 String TileMap[H] = {
-		"BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
-		"B             lr          lr                                                                                                                                                     lr                                                B",
-		"B             lr          lr																																				      lr						                        B",
-		"B             lr          lr                                                                                                                                                     lr                                                B",
-		"B             lr          lr																																					  lr							                    B",
-		"B             LR          lr                                                                                                                                                                                                       B",
-		"B                         lr                                                                                                                                                                                                       B",
-		"B                         lr                                                                                                                                                                                                       B",
-		"B                         LR                                                                                                                                                                                                       B",
-		"B                                                                                                                                                                                                                                  B",
-		"B                                                                                                                                                                                                                                  B",
-		"B                                                                                                                                                                                                                                  B",
-		"B                         ZX                                                                                                                                                                                                       B",
-		"B             ZX          lr                                                                                                                                                                                                       B",
-		"B             lr          lr                                                                                                                                                                                                       B",
-		"B             lr          lr                                                                                                                                                                                                       B",
-		"B             lr          lr                                                                                                                                                                                                       B",
-		"B             lr          lr                                                                                                                                                                                                       B",
-		"B             lr          lr                                                                                                                                                                                                       B",
-		"B             lr          lr                                                                                                                                                                                                       B",
-		"QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ",
-		"WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
-		"WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
+		"BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
+		"B             lr          lr                        B",
+		"B             lr          lr                        B",
+		"B             lr          lr                        B",
+		"B             lr          lr                        B",
+		"B             LR          lr                        B",
+		"B                         LR                        B",
+		"B                                                   B",
+		"B                                                   B",
+		"B                                                   B",
+		"B                                                   B",
+		"B                                                   B",
+		"B                         ZX                        B",
+		"B             ZX          lr                        B",
+		"B             lr          lr                        B",
+		"B             lr          lr                        B",
+		"B             lr          lr                        B",
+		"B             lr          lr                        B",
+		"B             lr          lr                        B",
+		"B             lr          lr                        B",
+		"QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ",
+		"WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
+		"WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
 	};
 
 
@@ -52,10 +54,25 @@ String TileMap[H] = {
 class map {
 public:
 	String *Tile;
+	int num_points;
 
 	map(String *m){
 		Tile = m;
+		num_points = 0;
 	}
+
+	void points (int pos_X) {
+		if (Tile[1][pos_X] == 'r' || Tile[19][pos_X] == 'r') {
+			detection_pipe = true; }
+		else { detection_pipe = false; }
+		if (detection_pipe_old == true && (Tile[1][pos_X] == ' ' || Tile[19][pos_X] == ' ')){
+			num_points += 1;
+		}
+		detection_pipe_old = detection_pipe;
+	}
+
+	void get_points(Sprite &s);
+
 
 } 
 // в фигурных скобках перечень карт, их количесво должно соответсвовать с num_maps

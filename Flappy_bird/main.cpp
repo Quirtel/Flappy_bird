@@ -12,12 +12,52 @@ float offsetX = 0;
 int start_p_x = 50;
 int start_p_y = 114;
 bool key_pressed = false;
-
+int c_lvl = 0;
 
 const int bit = 12;
 
+bool start = false;
+bool old_start = true;
+
 // создание окна
 RenderWindow window (VideoMode(700,500), "Flappy Bird");
+
+
+
+void map::get_points(Sprite &s){
+
+	switch (num_points / 10){
+		case 0: {s.setTextureRect(IntRect(181,3,14,20));break;}
+		case 1: {s.setTextureRect(IntRect(181,25,14,20));break;}
+		case 2: {s.setTextureRect(IntRect(181,47,14,20));break;}
+		case 3: {s.setTextureRect(IntRect(181,69,14,20));break;}
+		case 4: {s.setTextureRect(IntRect(181,91,14,20));break;}
+		case 5: {s.setTextureRect(IntRect(181,113,14,20));break;}
+		case 6: {s.setTextureRect(IntRect(181,135,14,20));break;}
+		case 7: {s.setTextureRect(IntRect(181,157,14,20));break;}
+		case 8: {s.setTextureRect(IntRect(181,179,14,20));break;}
+		case 9: {s.setTextureRect(IntRect(181,201,14,20));break;}
+		default: std::cout << "ERORR get points 1" << std::endl;
+		}
+		s.setPosition(30,20);
+		window.draw(s);
+
+		switch (num_points % 10) {
+		case 0: {s.setTextureRect(IntRect(181,3,14,20));break;}
+		case 1: {s.setTextureRect(IntRect(181,25,14,20));break;}
+		case 2: {s.setTextureRect(IntRect(181,47,14,20));break;}
+		case 3: {s.setTextureRect(IntRect(181,69,14,20));break;}
+		case 4: {s.setTextureRect(IntRect(181,91,14,20));break;}
+		case 5: {s.setTextureRect(IntRect(181,113,14,20));break;}
+		case 6: {s.setTextureRect(IntRect(181,135,14,20));break;}
+		case 7: {s.setTextureRect(IntRect(181,157,14,20));break;}
+		case 8: {s.setTextureRect(IntRect(181,179,14,20));break;}
+		case 9: {s.setTextureRect(IntRect(181,201,14,20));break;}
+		default: std::cout << "ERORR get points 2" << std::endl;
+		}
+		s.setPosition(30+15,20);
+		window.draw(s);
+}
 
 
 class player {
@@ -112,37 +152,38 @@ public:
 		int X4 = (rect.left+start_p_x) / bit;
 		int Y4 = (rect.top + bit) / bit;
 
-		if (level[0].Tile[Y1][X1] == 'B') {
+		if (level[c_lvl].Tile[Y1][X1] == 'B') {
 			std::cout << "CollisionY with 'B' " << std::endl;
 		}
-		if (level[0].Tile[Y1][X1] == 'l' || level[0].Tile[Y1][X1] == 'r' || level[0].Tile[Y1][X1] == 'L' || 
-			level[0].Tile[Y1][X1] == 'R' || level[0].Tile[Y1][X1] == 'Z' || level[0].Tile[Y1][X1] == 'X' ||
-			level[0].Tile[Y1][X1] == 'Q'){
+		if (level[c_lvl].Tile[Y1][X1] == 'l' || level[c_lvl].Tile[Y1][X1] == 'r' || level[c_lvl].Tile[Y1][X1] == 'L' || 
+			level[c_lvl].Tile[Y1][X1] == 'R' || level[c_lvl].Tile[Y1][X1] == 'Z' || level[c_lvl].Tile[Y1][X1] == 'X' ||
+			level[c_lvl].Tile[Y1][X1] == 'Q'){
 				std::cout << "Collision point (X1; Y1) " << std::endl;
 				rect.top = p;
 				death_p = false;
 		}
-		if  (level[0].Tile[Y2][X2] == 'l' || level[0].Tile[Y2][X2] == 'r' || level[0].Tile[Y2][X2] =='L' ||
-			level[0].Tile[Y2][X2] =='R' ||level[0].Tile[Y2][X2] == 'Z' || level[0].Tile[Y2][X2] == 'X' || 
-			level[0].Tile[Y2][X2] =='Q') {
+		if  (level[c_lvl].Tile[Y2][X2] == 'l' || level[c_lvl].Tile[Y2][X2] == 'r' || level[c_lvl].Tile[Y2][X2] =='L' ||
+			level[c_lvl].Tile[Y2][X2] =='R' ||level[c_lvl].Tile[Y2][X2] == 'Z' || level[c_lvl].Tile[Y2][X2] == 'X' || 
+			level[c_lvl].Tile[Y2][X2] =='Q') {
 				std::cout << "Collision point (X2; Y2) " << std::endl;
 				rect.top = p;
 				death_p = false;
 		}
-		if  (level[0].Tile[Y3][X3] == 'l' || level[0].Tile[Y3][X3] == 'r' || level[0].Tile[Y3][X3] =='L' ||
-			level[0].Tile[Y3][X3] =='R' ||level[0].Tile[Y3][X3] == 'Z' || level[0].Tile[Y3][X3] == 'X' || 
-			level[0].Tile[Y3][X3] =='Q') {
+		if  (level[c_lvl].Tile[Y3][X3] == 'l' || level[c_lvl].Tile[Y3][X3] == 'r' || level[c_lvl].Tile[Y3][X3] =='L' ||
+			level[c_lvl].Tile[Y3][X3] =='R' ||level[c_lvl].Tile[Y3][X3] == 'Z' || level[c_lvl].Tile[Y3][X3] == 'X' || 
+			level[c_lvl].Tile[Y3][X3] =='Q') {
 				std::cout << "Collision point (X3; Y3) " << std::endl;
 				rect.top = p;
 				death_p = false;
 		}
-		if  (level[0].Tile[Y4][X4] == 'l' || level[0].Tile[Y4][X4] == 'r' || level[0].Tile[Y4][X4] =='L' ||
-			level[0].Tile[Y4][X4] =='R' ||level[0].Tile[Y4][X4] == 'Z' || level[0].Tile[Y4][X4] == 'X' || 
-			level[0].Tile[Y4][X4] =='Q') {
+		if  (level[c_lvl].Tile[Y4][X4] == 'l' || level[c_lvl].Tile[Y4][X4] == 'r' || level[c_lvl].Tile[Y4][X4] =='L' ||
+			level[c_lvl].Tile[Y4][X4] =='R' ||level[c_lvl].Tile[Y4][X4] == 'Z' || level[c_lvl].Tile[Y4][X4] == 'X' || 
+			level[c_lvl].Tile[Y4][X4] =='Q') {
 				std::cout << "Collision point (X4; Y4) " << std::endl;
 				rect.top = p;
 				death_p = false;
 		}
+		level[c_lvl].points(X1);
 
 	};
 
@@ -157,6 +198,7 @@ void algorithm_gemas (Texture &t){
 
 	Sprite tile(t);
 	Sprite Fon(t);
+	Sprite g_p(t);
 
 	int PosI = 4, PosJ = 50;
 	
@@ -168,50 +210,57 @@ void algorithm_gemas (Texture &t){
 
 		time = time/1500;
 		
-		Event event;
-		while (window.pollEvent(event)){
-
-			if (event.type == Event::Closed){ 
-				window.close(); }
-		}
-
-		if (bird.death_p == true) {
-			if (Keyboard::isKeyPressed(Keyboard::Up) == true && key_pressed == false ){ 
-				bird.dy = -0.25;
-				key_pressed = true;
+		bool pr = Keyboard::isKeyPressed(Keyboard::Up);
+		// стоп кадр
+		if (old_start == true || pr == true){
+			if (pr == true){
+				start = true;
 			}
 
-			if (Keyboard::isKeyPressed(Keyboard::Up) == false){ 
-				key_pressed = false;
+			Event event;
+			while (window.pollEvent(event)){
+
+				if (event.type == Event::Closed){ 
+					window.close(); }
 			}
-		}
-		else {
-			bird.dy = 0.25;
-		}
-		
-		offsetX = bird.rect.left;
 
-		bird.update(time); 
-		
+			if (bird.death_p == true) {
+				if (Keyboard::isKeyPressed(Keyboard::Up) == true && key_pressed == false ){ 
+					bird.dy = -0.2;
+					key_pressed = true;
+				}
 
-		window.clear(Color::White);
-		
-		
-		for (int i=0; i<H;i++){
-			for (int j = 0, J = 0; j < W; j++, J++) {
+				if (Keyboard::isKeyPressed(Keyboard::Up) == false){ 
+					key_pressed = false;
+				}
+			}
+			else {
+				bird.dy = 0.25;
+			}
 
-				
-				// загрузка 1 слоя - фона
-				if((4+J*bit) < 136){
-					Fon.setTextureRect(IntRect(4+J*bit,50+i*bit,12,12));}
-				else {J = 0; }
-				
-				Fon.setPosition(j*bit-offsetX,i*bit);
-				window.draw(Fon);
-				
-				
-				// загрузка 2 слоя - объектов(плиток)
-				switch (level[0].Tile[i][j]){
+			offsetX = bird.rect.left;
+
+			bird.update(time); 
+
+
+			window.clear(Color::White);
+
+
+			for (int i=0; i<H;i++){
+				for (int j = 0, J = 0; j < W; j++, J++) {
+
+
+					// загрузка 1 слоя - фона
+					if((4+J*bit) < 136){
+						Fon.setTextureRect(IntRect(4+J*bit,50+i*bit,12,12));}
+					else {J = 0; }
+
+					Fon.setPosition(j*bit-offsetX,i*bit);
+					window.draw(Fon);
+
+
+					// загрузка 2 слоя - объектов(плиток)
+					switch (level[c_lvl].Tile[i][j]){
 					case 'Q': { tile.setTextureRect(IntRect(150,106,bit,bit)); break;}
 					case 'W': { tile.setTextureRect(IntRect(150,121,bit,bit)); break;}
 					case 'L': { tile.setTextureRect(IntRect(149,65,bit,bit)); break;}
@@ -222,23 +271,30 @@ void algorithm_gemas (Texture &t){
 					case 'X': { tile.setTextureRect(IntRect(163,77,bit,-bit)); break;}
 					case 'B': { tile.setTextureRect(IntRect(150,117,bit,-bit)); break;}
 					default: { tile.setTextureRect(IntRect(0,0,0,0));}
+					}
+
+					tile.setPosition(j*bit-offsetX,i*bit);
+					window.draw(tile);
 				}
-				
-				tile.setPosition(j*bit-offsetX,i*bit);
+			}
+
+			//вывод очков
+			level[c_lvl].get_points(g_p);
+
+			// отображение GAME OVER
+			if (bird.death_p == false){
+				tile.setTextureRect(IntRect(59,0,93,18));
+				tile.setPosition(start_p_x + 50,110);
 				window.draw(tile);
 			}
-		}
 
-		// отображение GAME OVER
-		if (bird.death_p == false){
-			tile.setTextureRect(IntRect(59,0,93,18));
-			tile.setPosition(start_p_x + 50,110);
-			window.draw(tile);
-		}
-		
-		window.draw(bird.sprite);
-		window.display();
+			window.draw(bird.sprite);
+			window.display();
 
+			old_start = start;
+		}
+		// для вывода "Нажмите Up"
+		//else {}
 	}
 }
 

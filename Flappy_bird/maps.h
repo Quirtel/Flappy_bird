@@ -1,11 +1,12 @@
 #include <SFML\Graphics.hpp>
+#include <iostream>
 
 
 
 using namespace sf;
 
 const int H = 23; // высота
-const int W = 53; // длина
+int W = 53; // длина
 
 const int num_maps = 1;
 bool detection_pipe;
@@ -24,32 +25,32 @@ bool detection_pipe_old = false;
 */
 
 String TileMap[H] = {
-		"BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
-		"B             lr          lr                        B",
-		"B             lr          lr                        B",
-		"B             lr          lr                        B",
-		"B             lr          lr                        B",
-		"B             LR          lr                        B",
-		"B                         LR                        B",
-		"B                                                   B",
-		"B                                                   B",
-		"B                                                   B",
-		"B                                                   B",
-		"B                                                   B",
-		"B                         ZX                        B",
-		"B             ZX          lr                        B",
-		"B             lr          lr                        B",
-		"B             lr          lr                        B",
-		"B             lr          lr                        B",
-		"B             lr          lr                        B",
-		"B             lr          lr                        B",
-		"B             lr          lr                        B",
-		"QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ",
-		"WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
-		"WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
+		"BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
+		"B             lr          lr                                                                        CB",
+		"B             lr          lr                                                                        CB",
+		"B             lr          lr                                                                        CB",
+		"B             lr          lr                                                                        CB",
+		"B             LR          lr                                                                        CB",
+		"B                         LR                                                                        CB",
+		"B                                                                                                   CB",
+		"B                                                                                                   CB",
+		"B                                                                                                   CB",
+		"B                                                                                                   CB",
+		"B                                                                                                   CB",
+		"B                                                                                                   CB",
+		"B             ZX                                                                                    CB",
+		"B             lr          ZX                                                                        CB",
+		"B             lr          lr                                                                        CB",
+		"B             lr          lr                                                                        CB",
+		"B             lr          lr                                                                        CB",
+		"B             lr          lr                                                                        CB",
+		"B             lr          lr                                                                        CB",
+		"QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ",
+		"WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
+		"WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
 	};
 
-
+	// C - уровень пройден
 
 class map {
 public:
@@ -71,8 +72,14 @@ public:
 		detection_pipe_old = detection_pipe;
 	}
 
-	void get_points(Sprite &s);
+	void get_points(Sprite &s, bool con);
 
+	void dlinna_map() {
+		int h;
+		for (int i = 0; Tile[2][i] != 'C'; i++) {
+			W = i+3; }
+		std::cout << "W = " << W << std::endl;
+	}
 
 } 
 // в фигурных скобках перечень карт, их количесво должно соответсвовать с num_maps

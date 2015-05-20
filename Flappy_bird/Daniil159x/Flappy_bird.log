@@ -1,12 +1,44 @@
-﻿Построение начато 15.05.2015 19:52:28.
+﻿Построение начато 20.05.2015 15:18:51.
      1>Проект "D:\Данено\Проекты\Flappy_bird\Flappy_bird\Flappy_bird\Flappy_bird.vcxproj" в узле 2 (целевые объекты build).
      1>InitializeBuildStatus:
-         Создание "Daniil159x\Flappy_bird.unsuccessfulbuild", так как было задано "AlwaysCreate".
+         Обращение к "Daniil159x\Flappy_bird.unsuccessfulbuild".
        ClCompile:
-         Для всех выходных данных обновления не требуется.
+         C:\Program Files\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I"D:\Данено\Проекты\Flappy_bird\Flappy_bird\SFML\include" /IC:\Users\Raiden\Flappy_bird\SFML\include /ZI /nologo /W3 /WX- /Od /Oy- /D SFML_DYNAMIC /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Daniil159x\\" /Fd"Daniil159x\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp
+         main.cpp
+     1>d:\данено\проекты\flappy_bird\flappy_bird\flappy_bird\maps.h(78): warning C4101: h: неиспользованная локальная переменная
+     1>d:\данено\проекты\flappy_bird\flappy_bird\flappy_bird\main.cpp(47): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+     1>d:\данено\проекты\flappy_bird\flappy_bird\flappy_bird\main.cpp(64): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+     1>d:\данено\проекты\flappy_bird\flappy_bird\flappy_bird\main.cpp(102): warning C4305: =: усечение из "double" к "float"
+     1>d:\данено\проекты\flappy_bird\flappy_bird\flappy_bird\main.cpp(108): warning C4305: +=: усечение из "double" к "float"
+     1>d:\данено\проекты\flappy_bird\flappy_bird\flappy_bird\main.cpp(130): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+     1>d:\данено\проекты\flappy_bird\flappy_bird\flappy_bird\main.cpp(141): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+     1>d:\данено\проекты\flappy_bird\flappy_bird\flappy_bird\main.cpp(156): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
+     1>d:\данено\проекты\flappy_bird\flappy_bird\flappy_bird\main.cpp(157): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
+     1>d:\данено\проекты\flappy_bird\flappy_bird\flappy_bird\main.cpp(158): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
+     1>d:\данено\проекты\flappy_bird\flappy_bird\flappy_bird\main.cpp(159): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
+     1>d:\данено\проекты\flappy_bird\flappy_bird\flappy_bird\main.cpp(160): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
+     1>d:\данено\проекты\flappy_bird\flappy_bird\flappy_bird\main.cpp(161): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
+     1>d:\данено\проекты\flappy_bird\flappy_bird\flappy_bird\main.cpp(162): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
+     1>d:\данено\проекты\flappy_bird\flappy_bird\flappy_bird\main.cpp(163): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
+     1>d:\данено\проекты\flappy_bird\flappy_bird\flappy_bird\main.cpp(254): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+     1>d:\данено\проекты\flappy_bird\flappy_bird\flappy_bird\main.cpp(258): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+     1>d:\данено\проекты\flappy_bird\flappy_bird\flappy_bird\main.cpp(290): warning C4244: инициализация: преобразование "sf::Int64" в "float", возможна потеря данных
+     1>d:\данено\проекты\flappy_bird\flappy_bird\flappy_bird\main.cpp(319): warning C4305: =: усечение из "double" к "float"
+     1>d:\данено\проекты\flappy_bird\flappy_bird\flappy_bird\main.cpp(339): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+     1>d:\данено\проекты\flappy_bird\flappy_bird\flappy_bird\main.cpp(353): warning C4244: аргумент: преобразование "const int" в "float", возможна потеря данных
+     1>d:\данено\проекты\flappy_bird\flappy_bird\flappy_bird\main.cpp(371): warning C4244: аргумент: преобразование "const int" в "float", возможна потеря данных
+     1>d:\данено\проекты\flappy_bird\flappy_bird\flappy_bird\main.cpp(378): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+     1>d:\данено\проекты\flappy_bird\flappy_bird\flappy_bird\main.cpp(378): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+     1>d:\данено\проекты\flappy_bird\flappy_bird\flappy_bird\main.cpp(381): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+     1>d:\данено\проекты\flappy_bird\flappy_bird\flappy_bird\main.cpp(381): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+     1>d:\данено\проекты\flappy_bird\flappy_bird\flappy_bird\main.cpp(390): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+     1>d:\данено\проекты\flappy_bird\flappy_bird\flappy_bird\main.cpp(398): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
        Link:
-         Для всех выходных данных обновления не требуется.
+         C:\Program Files\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Данено\Проекты\Flappy_bird\Flappy_bird\Daniil159x\Flappy_bird.exe" /NOLOGO /LIBPATH:"D:\Данено\Проекты\Flappy_bird\Flappy_bird\SFML\lib" /LIBPATH:C:\Users\Raiden\Flappy_bird\SFML\lib "sfml-graphics-d.lib" "sfml-window-d.lib" "sfml-system-d.lib" "sfml-audio-d.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Daniil159x\Flappy_bird.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"D:\Данено\Проекты\Flappy_bird\Flappy_bird\Daniil159x\Flappy_bird.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\Данено\Проекты\Flappy_bird\Flappy_bird\Daniil159x\Flappy_bird.lib" /MACHINE:X86 Daniil159x\main.obj
+         LINK : не найден или не выполнена сборка D:\Данено\Проекты\Flappy_bird\Flappy_bird\Daniil159x\Flappy_bird.exe при последней инкрементной компоновке; выполняется полная компоновка
          Flappy_bird.vcxproj -> D:\Данено\Проекты\Flappy_bird\Flappy_bird\Daniil159x\Flappy_bird.exe
+       Manifest:
+         C:\Program Files\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"D:\Данено\Проекты\Flappy_bird\Flappy_bird\Daniil159x\Flappy_bird.exe;#1" /manifest Daniil159x\Flappy_bird.exe.intermediate.manifest
        FinalizeBuildStatus:
          Файл "Daniil159x\Flappy_bird.unsuccessfulbuild" удаляется.
          Обращение к "Daniil159x\Flappy_bird.lastbuildstate".
@@ -14,4 +46,4 @@
 
 Построение успешно завершено.
 
-Затраченное время: 00:00:00.10
+Затраченное время: 00:00:02.88

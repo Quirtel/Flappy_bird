@@ -6,7 +6,9 @@
 
 using namespace sf;
 
-int height_win = 600;
+String vers = "Beta 1.0";
+
+int height_win = 244;
 int length_win = 800;
 int ground = 227;
 
@@ -23,10 +25,22 @@ bool old_start = true;
 
 
 // создание окна
-RenderWindow window (VideoMode(142,215), "Flappy Bird - Menu");
+RenderWindow window (VideoMode(142,215), "Flappy Bird " + vers + " - Menu");
 
 Texture t;
 Texture t2;
+
+
+/*
+void infinity(){
+for (int i = 0;; i++) // по ’
+for (int j = 0;; j++)
+//level[]
+}
+*/
+
+
+
 
 void map::get_points(Sprite &s, bool con){
 
@@ -41,7 +55,7 @@ void map::get_points(Sprite &s, bool con){
 	case 7: {s.setTextureRect(IntRect(181,157,14,20));break;}
 	case 8: {s.setTextureRect(IntRect(181,179,14,20));break;}
 	case 9: {s.setTextureRect(IntRect(181,201,14,20));break;}
-	default: std::cout << "ERORR get points 1" << std::endl;
+	default: std::cout << "Message from handler points: ERORR get points 1" << std::endl;
 	}
 	if (con == true){	s.setPosition(30,20);}
 	else{	s.setPosition(75+start_p_x, 70);}
@@ -58,7 +72,7 @@ void map::get_points(Sprite &s, bool con){
 	case 7: {s.setTextureRect(IntRect(181,157,14,20));break;}
 	case 8: {s.setTextureRect(IntRect(181,179,14,20));break;}
 	case 9: {s.setTextureRect(IntRect(181,201,14,20));break;}
-	default: std::cout << "ERORR get points 2" << std::endl;
+	default: std::cout << "Message from handler points: ERORR get points 2" << std::endl;
 	}
 	if (con == true){	s.setPosition(30+15,20); }
 	else {	s.setPosition(75+15+start_p_x, 70);}
@@ -143,7 +157,7 @@ public:
 			death_p = false;
 		}
 
-		
+
 		// вывод
 		sprite.setPosition(rect.left-offsetX+start_p_x, rect.top);
 
@@ -163,33 +177,33 @@ public:
 		int Y4 = (rect.top + bit) / bit;
 
 		if (level[c_lvl].Tile[Y1][X1] == 'B') {
-			std::cout << "CollisionY with 'B' " << std::endl;
+			std::cout << "Message from handler collosion: CollisionY with 'B' " << std::endl;
 		}
 		if (level[c_lvl].Tile[Y1][X1] == 'l' || level[c_lvl].Tile[Y1][X1] == 'r' || level[c_lvl].Tile[Y1][X1] == 'L' || 
 			level[c_lvl].Tile[Y1][X1] == 'R' || level[c_lvl].Tile[Y1][X1] == 'Z' || level[c_lvl].Tile[Y1][X1] == 'X' ||
 			level[c_lvl].Tile[Y1][X1] == 'Q'){
-				std::cout << "Collision point (X1; Y1) " << std::endl;
+				std::cout << "Message from handler collosion: Collision point (X1; Y1) " << std::endl;
 				rect.top = p;
 				death_p = false;
 		}
 		if  (level[c_lvl].Tile[Y2][X2] == 'l' || level[c_lvl].Tile[Y2][X2] == 'r' || level[c_lvl].Tile[Y2][X2] =='L' ||
 			level[c_lvl].Tile[Y2][X2] =='R' ||level[c_lvl].Tile[Y2][X2] == 'Z' || level[c_lvl].Tile[Y2][X2] == 'X' || 
 			level[c_lvl].Tile[Y2][X2] =='Q') {
-				std::cout << "Collision point (X2; Y2) " << std::endl;
+				std::cout << "Message from handler collosion: Collision point (X2; Y2) " << std::endl;
 				rect.top = p;
 				death_p = false;
 		}
 		if  (level[c_lvl].Tile[Y3][X3] == 'l' || level[c_lvl].Tile[Y3][X3] == 'r' || level[c_lvl].Tile[Y3][X3] =='L' ||
 			level[c_lvl].Tile[Y3][X3] =='R' ||level[c_lvl].Tile[Y3][X3] == 'Z' || level[c_lvl].Tile[Y3][X3] == 'X' || 
 			level[c_lvl].Tile[Y3][X3] =='Q') {
-				std::cout << "Collision point (X3; Y3) " << std::endl;
+				std::cout << "Message from handler collosion: Collision point (X3; Y3) " << std::endl;
 				rect.top = p;
 				death_p = false;
 		}
 		if  (level[c_lvl].Tile[Y4][X4] == 'l' || level[c_lvl].Tile[Y4][X4] == 'r' || level[c_lvl].Tile[Y4][X4] =='L' ||
 			level[c_lvl].Tile[Y4][X4] =='R' ||level[c_lvl].Tile[Y4][X4] == 'Z' || level[c_lvl].Tile[Y4][X4] == 'X' || 
 			level[c_lvl].Tile[Y4][X4] =='Q') {
-				std::cout << "Collision point (X4; Y4) " << std::endl;
+				std::cout << "Message from handler collosion: Collision point (X4; Y4) " << std::endl;
 				rect.top = p;
 				death_p = false;
 		}
@@ -197,6 +211,7 @@ public:
 
 		if (level[c_lvl].Tile[Y4][X4] == 'C'){
 			level_passed = true;
+			std::cout << "Message from handler collosion: Collision with 'C' " << std::endl;
 		}
 	};
 
@@ -206,8 +221,8 @@ public:
 
 
 bool menu (){
-	window.create(VideoMode(142,215), "Flappy Bird - Menu");
-	
+	window.create(VideoMode(142,215), "Flappy Bird " + vers + " - Menu");
+
 	Sprite tile_1(t);
 	Sprite tile_2(t2);
 	bool c_close = true;
@@ -215,23 +230,23 @@ bool menu (){
 
 
 		Event event;
-        while (window.pollEvent(event))
-        {
-            if (event.type == Event::Closed){
-                window.close();
+		while (window.pollEvent(event))
+		{
+			if (event.type == Event::Closed){
+				window.close();
 				c_close = false; }
 			if (event.type == Event::MouseButtonReleased)
 				if (event.key.code == Mouse::Left){
 					c_close = true; 
 					window.close();}
-        
-		
+
+
 		}
 
 		tile_1.setTextureRect(IntRect(4,50,142,250));
 		tile_1.setPosition(0,0);
 		window.draw(tile_1);
-		
+
 		tile_1.setTextureRect(IntRect(5,20,78,22));
 		tile_1.setPosition(0,0);
 		window.draw(tile_1);
@@ -250,15 +265,15 @@ bool menu (){
 void tabl(Sprite &s){
 	Sprite tabl(t2);
 
-		tabl.setTextureRect(IntRect(0,0,110,57));
-		tabl.setPosition(start_p_x, 50);
-		window.draw(tabl);
+	tabl.setTextureRect(IntRect(0,0,110,57));
+	tabl.setPosition(start_p_x, 50);
+	window.draw(tabl);
 
-		tabl.setTextureRect(IntRect(43,60,39,14));
-		tabl.setPosition(8+start_p_x,85);
-		window.draw(tabl);
+	tabl.setTextureRect(IntRect(43,60,39,14));
+	tabl.setPosition(8+start_p_x,85);
+	window.draw(tabl);
 
-		level[c_lvl].get_points(s, false);
+	level[c_lvl].get_points(s, false);
 
 }
 
@@ -268,7 +283,7 @@ bool algorithm_gemas (){
 
 	player bird(t);
 
-	window.create(VideoMode(length_win, height_win), "Flappy Bird - Game");
+	window.create(VideoMode(length_win, height_win), "Flappy Bird " + vers + " - Game");
 
 	Clock clock;
 
@@ -305,12 +320,22 @@ bool algorithm_gemas (){
 
 			if (event.type == Event::Closed){ 
 				window.close(); }
-			if (event.type == Event::MouseButtonReleased && (bird.death_p == false || bird.level_passed == true))
+			if (event.type == Event::MouseButtonReleased  && (bird.death_p == false || bird.level_passed == true)){
 				if (event.key.code == Mouse::Left && (pos.x >= (8+start_p_x) && pos.x <= (48+start_p_x)
 					&& pos.y >= 85 && pos.y <= 99) ){
-					skip = true;
-					control_start = true; 
-					std::cout << "Mouse pressed" << std::endl;}
+						skip = true;
+						control_start = true; 
+						std::cout << "Message from event handler: Mouse pressed" << std::endl;}
+			}
+
+
+
+		}
+
+		if (Keyboard::isKeyPressed(Keyboard::Space) && (bird.death_p == false || bird.level_passed == true)){
+			skip = true;
+			control_start = true; 
+			std::cout << "Message from event handler: Space pressed" << std::endl;
 		}
 
 		if (press_Up == true && bird.level_passed == false){
@@ -324,7 +349,13 @@ bool algorithm_gemas (){
 					key_pressed = false;
 				}
 				if (Keyboard::isKeyPressed(Keyboard::LControl)){
+					std::cout << "Message from event handler: LControl pressed - PAUSE" << std::endl;
+					float time_pause = time;
 					system("pause");
+					std::cout << "Message from event handler: END PAUSE"<< std::endl;
+					sleep(seconds(1));
+					time = time_pause;
+					clock.restart();
 				}
 			}
 			else {
@@ -380,6 +411,7 @@ bool algorithm_gemas (){
 			ready.setTextureRect(IntRect(3,143,86,21));
 			ready.setPosition(start_p_x+20,start_p_y-60);
 			window.draw(ready);
+
 		}
 
 		window.draw(bird.sprite);
@@ -418,18 +450,36 @@ bool algorithm_gemas (){
 void main () {
 	// синхронизаци€
 	window.setVerticalSyncEnabled(true);
-
-	t.loadFromFile("FLAPPYRED.png");
-	t2.loadFromFile("FLAPPYRED2.png");
+	bool c = true;
 
 
-	bool control = menu();
-	while(control == true) {
-		control = false;
-		control = algorithm_gemas();
-		// каждый рестарт нова€ карта
-		c_lvl = rand() % num_maps;
-		std::cout << "Message from main cycle: step completed" << std::endl;
+	if (t.loadFromFile("FLAPPYRED.png")) {	
+		std::cout << "Load Texture 'FLAPPYRED.png' - COMPLETE" << std::endl;}
+	else {	
+		std::cout << "Load Texture 'FLAPPYRED.png' - ERROR" << std::endl;
+		c = false;
 	}
+	if (t2.loadFromFile("FLAPPYRED2.png")) {	
+		std::cout << "Load Texture 'FLAPPYRED2.png' - COMPLETE" << std::endl;}
+	else {	
+		std::cout << "Load Texture 'FLAPPYRED2.png' - ERROR" << std::endl;
+		c = false;
+	}
+
+
+
+
+
+	if (c == true) {
+		bool control = menu();
+		while(control == true) {
+			control = false;
+			control = algorithm_gemas();
+			// каждый рестарт нова€ карта
+			c_lvl = rand() % num_maps;
+			std::cout << "Message from main cycle: step completed" << std::endl;
+		}
+	}
+
 	system("pause");
 }

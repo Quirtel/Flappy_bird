@@ -5,10 +5,10 @@
 
 using namespace sf;
 
-const int H = 23; // высота
+const int H = 22; // высота
 int W = 53; // длина
 
-const int num_maps = 1;
+const int num_maps = 2;
 bool detection_pipe;
 bool detection_pipe_old = false;
 
@@ -26,30 +26,54 @@ bool detection_pipe_old = false;
 
 String TileMap[H] = {
 		"BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
-		"B             lr          lr                                                                        CB",
-		"B             lr          lr                                                                        CB",
-		"B             lr          lr                                                                        CB",
-		"B             lr          lr                                                                        CB",
-		"B             LR          lr                                                                        CB",
-		"B                         LR                                                                        CB",
-		"B                                                                                                   CB",
-		"B                                                                                                   CB",
-		"B                                                                                                   CB",
-		"B                                                                                                   CB",
-		"B                                                                                                   CB",
-		"B                                                                                                   CB",
-		"B             ZX                                                                                    CB",
-		"B             lr          ZX                                                                        CB",
-		"B             lr          lr                                                                        CB",
-		"B             lr          lr                                                                        CB",
-		"B             lr          lr                                                                        CB",
-		"B             lr          lr                                                                        CB",
-		"B             lr          lr                                                                        CB",
+		"B             lr          lr            lr          lr           lr           lr           lr       C ",
+		"B             lr          lr            lr          lr           lr           lr           lr       C ",
+		"B             lr          lr            lr          lr           lr           lr           lr       C ",
+		"B             lr          lr            lr          lr           lr           lr           lr       C ",
+		"B             LR          lr            lr          lr           LR           lr           lr       C ",
+		"B                         LR            lr          LR                        lr           LR       C ",
+		"B                                       lr                                    LR                    C ",
+		"B                                       lr                                                          C ",
+		"B                                       LR                                                          C ",
+		"B                                                                                                   C ",
+		"B                                                                ZX                                 C ",
+		"B             ZX                                    ZX           lr                                 C ",
+		"B             lr          ZX                        lr           lr                        ZX       C ",
+		"B             lr          lr                        lr           lr           ZX           lr       C ",
+		"B             lr          lr                        lr           lr           lr           lr       C ",
+		"B             lr          lr            ZX          lr           lr           lr           lr       C ",
+		"B             lr          lr            lr          lr           lr           lr           lr       C ",
+		"B             lr          lr            lr          lr           lr           lr           lr       C ",
 		"QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ",
 		"WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
 		"WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
 	};
 
+
+	String TileMap2[H] = {
+		"BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
+		"B             lr          lr            lr          lr           lr           lr           lr       C ",
+		"B             lr          lr            lr          lr           lr           lr           lr       C ",
+		"B             lr          lr            lr          lr           lr           lr           lr       C ",
+		"B             lr          lr            lr          lr           LR           lr           lr       C ",
+		"B             LR          lr            lr          LR                        lr           lr       C ",
+		"B                         LR            lr                                    lr           LR       C ",
+		"B                                       lr                                    LR                    C ",
+		"B                                       lr                                                          C ",
+		"B                                       LR                                                          C ",
+		"B                                                                                                   C ",
+		"B                                                                ZX                                 C ",
+		"B             ZX                                    ZX           lr                                 C ",
+		"B             lr          ZX                        lr           lr                        ZX       C ",
+		"B             lr          lr                        lr           lr           ZX           lr       C ",
+		"B             lr          lr                        lr           lr           lr           lr       C ",
+		"B             lr          lr            ZX          lr           lr           lr           lr       C ",
+		"B             lr          lr            lr          lr           lr           lr           lr       C ",
+		"B             lr          lr            lr          lr           lr           lr           lr       C ",
+		"QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ",
+		"WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
+		"WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
+	};
 	// C - уровень пройден
 
 class map {
@@ -84,4 +108,4 @@ public:
 } 
 // в фигурных скобках перечень карт, их количесво должно соответсвовать с num_maps
 // num_maps можно увеличивать
-level[num_maps] = {TileMap};
+level[num_maps] = {TileMap, TileMap2};

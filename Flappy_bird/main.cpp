@@ -222,9 +222,8 @@ public:
 		}
 		level[c_lvl].points(X1);
 
-		if (level[c_lvl].Tile[Y4][X4] == 'C'){
-			level_passed = true;
-			std::cout << "Message from handler collosion: Collision with 'C' " << std::endl;
+		if (level[c_lvl].Tile[Y4][X4] == 'S'){
+			std::cout << "Message from handler collosion: Collision with 'B' " << std::endl;
 		}
 	};
 
@@ -292,9 +291,7 @@ void tabl(Sprite &s){
 
 bool algorithm_gemas (){
 
-	wing.play();
-
-	level[c_lvl].dlinna_map();
+	//level[c_lvl].dlinna_map();
 
 	player bird(t);
 
@@ -484,17 +481,13 @@ void main () {
 		c = false;
 	}
 
-
-
-
-
 	if (c == true) {
 		bool control = menu();
 		while(control == true) {
 			control = false;
 			control = algorithm_gemas();
 			// каждый рестарт новая карта
-			c_lvl = rand() % num_maps;
+			/*c_lvl = rand() % num_maps;*/
 			std::cout << "Message from main cycle: step completed" << std::endl;
 		}
 	}

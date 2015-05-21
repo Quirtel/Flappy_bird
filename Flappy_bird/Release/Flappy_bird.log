@@ -1,11 +1,10 @@
-﻿Сборка начата 21.05.2015 17:05:50.
+﻿Сборка начата 21.05.2015 19:53:22.
      1>Проект "C:\Users\Raiden\Flappy_bird\Flappy_bird\Flappy_bird.vcxproj" в узле 2 (целевые объекты build).
      1>InitializeBuildStatus:
          Создание "Release\Flappy_bird.unsuccessfulbuild", так как было задано "AlwaysCreate".
        ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /IC:\Users\Raiden\Flappy_bird\SFML\include /I"D:\Данено\Проекты\Flappy_bird\Flappy_bird\SFML\include" /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D SFML_DYNAMIC /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp
          main.cpp
-     1>c:\users\raiden\flappy_bird\flappy_bird\maps.h(308): warning C4101: h: неиспользованная локальная переменная
      1>main.cpp(68): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
      1>main.cpp(85): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
      1>main.cpp(123): warning C4305: =: усечение из "double" к "float"
@@ -20,19 +19,19 @@
      1>main.cpp(184): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
      1>main.cpp(185): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
      1>main.cpp(186): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
-     1>main.cpp(281): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-     1>main.cpp(285): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-     1>main.cpp(320): warning C4244: инициализация: преобразование "sf::Int64" в "float", возможна потеря данных
-     1>main.cpp(359): warning C4305: =: усечение из "double" к "float"
-     1>main.cpp(386): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-     1>main.cpp(400): warning C4244: аргумент: преобразование "const int" в "float", возможна потеря данных
-     1>main.cpp(418): warning C4244: аргумент: преобразование "const int" в "float", возможна потеря данных
+     1>main.cpp(280): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+     1>main.cpp(284): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+     1>main.cpp(317): warning C4244: инициализация: преобразование "sf::Int64" в "float", возможна потеря данных
+     1>main.cpp(356): warning C4305: =: усечение из "double" к "float"
+     1>main.cpp(383): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+     1>main.cpp(397): warning C4244: аргумент: преобразование "const int" в "float", возможна потеря данных
+     1>main.cpp(415): warning C4244: аргумент: преобразование "const int" в "float", возможна потеря данных
+     1>main.cpp(422): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+     1>main.cpp(422): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
      1>main.cpp(425): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
      1>main.cpp(425): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-     1>main.cpp(428): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-     1>main.cpp(428): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-     1>main.cpp(441): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-     1>main.cpp(449): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+     1>main.cpp(438): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+     1>main.cpp(446): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Raiden\Flappy_bird\Release\Flappy_bird.exe" /NOLOGO /LIBPATH:C:\Users\Raiden\Flappy_bird\SFML\lib /LIBPATH:"D:\Данено\Проекты\Flappy_bird\Flappy_bird\SFML\lib" "sfml-graphics.lib" "sfml-window.lib" "sfml-system.lib" "sfml-audio.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Release\Flappy_bird.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\Raiden\Flappy_bird\Release\Flappy_bird.pdb" /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Raiden\Flappy_bird\Release\Flappy_bird.lib" /MACHINE:X86 Release\main.obj
          Создание кода
@@ -47,4 +46,4 @@
 
 Построение успешно завершено.
 
-Затраченное время: 00:00:01.17
+Затраченное время: 00:00:01.06

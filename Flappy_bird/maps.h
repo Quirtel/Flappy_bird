@@ -6,9 +6,9 @@
 using namespace sf;
 
 const int H = 22; // высота
-int W = 53; // длина
+int W = 102; // длина
 
-const int num_maps = 10;
+const int num_maps = 1;
 bool detection_pipe;
 bool detection_pipe_old = false;
 
@@ -29,255 +29,68 @@ bool detection_pipe_old = false;
 */
 
 String TileMap[H] = {
-		"BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
-		"B             lr          lr            lr          lr           lr           lr           lr       C ",
-		"B             lr          lr            lr          lr           lr           lr           lr       C ",
-		"B             lr          lr            lr          lr           lr           lr           lr       C ",
-		"B             lr          lr            lr          lr           LR           lr           lr       C ",
-		"B             LR          lr            lr          LR                        lr           lr       C ",
-		"B                         LR            lr                                    lr           LR       C ",
-		"B                                       lr                                    LR                    C ",
-		"B                                       lr                                                          C ",
-		"B                                       LR                                                          C ",
-		"B                                                                                                   C ",
-		"B                                                                ZX                                 C ",
-		"B             ZX                                    ZX           lr                                 C ",
-		"B             lr          ZX                        lr           lr                        ZX       C ",
-		"B             lr          lr                        lr           lr           ZX           lr       C ",
-		"B             lr          lr                        lr           lr           lr           lr       C ",
-		"B             lr          lr            ZX          lr           lr           lr           lr       C ",
-		"B             lr          lr            lr          lr           lr           lr           lr       C ",
-		"B             lr          lr            lr          lr           lr           lr           lr       C ",
-		"QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ",
-		"WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
-		"WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
+		L"BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
+		L"B             lr          lr            lr          lr           lr           lr           lr             ",
+		L"B             lr          lr            lr          lr           lr           lr           lr             ",
+		L"B             lr          lr            lr          lr           lr           lr           LR             ",
+		L"B             lr          lr            LR          lr           LR           lr                          ",
+		L"B             LR          lr                        LR                        lr                          ",
+		L"B                         lr                                                  lr                          ",
+		L"B                         lr                                                  LR                          ",
+		L"B                         lr                                                                              ",
+		L"B                         LR                                                                              ",
+		L"B                                                                                          ZX             ",
+		L"B                                       ZX                       ZX                        lr             ",
+		L"B             ZX                        lr          ZX           lr                        lr             ",
+		L"B             lr                        lr          lr           lr                        lr             ",
+		L"B             lr                        lr          lr           lr           ZX           lr             ",
+		L"B             lr                        lr          lr           lr           lr           lr             ",
+		L"B             lr          ZX            lr          lr           lr           lr           lr             ",
+		L"B             lr          lr            lr          lr           lr           lr           lr             ",
+		L"B             lr          lr            lr          lr           lr           lr           lr             ",
+		L"QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ",
+		L"WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
+		L"WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
 	};
 
 
-	String TileMap2[H] = {
-		"BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
-		"B             lr          lr            lr          lr           lr           lr           lr       C ",
-		"B             lr          lr            lr          lr           lr           lr           lr       C ",
-		"B             lr          lr            lr          lr           lr           lr           LR       C ",
-		"B             lr          lr            LR          lr           LR           lr                    C ",
-		"B             LR          lr                        LR                        lr                    C ",
-		"B                         lr                                                  lr                    C ",
-		"B                         lr                                                  LR                    C ",
-		"B                         lr                                                                        C ",
-		"B                         LR                                                                        C ",
-		"B                                                                                          ZX       C ",
-		"B                                       ZX                       ZX                        lr       C ",
-		"B             ZX                        lr          ZX           lr                        lr       C ",
-		"B             lr                        lr          lr           lr                        lr       C ",
-		"B             lr                        lr          lr           lr           ZX           lr       C ",
-		"B             lr                        lr          lr           lr           lr           lr       C ",
-		"B             lr          ZX            lr          lr           lr           lr           lr       C ",
-		"B             lr          lr            lr          lr           lr           lr           lr       C ",
-		"B             lr          lr            lr          lr           lr           lr           lr       C ",
-		"QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ",
-		"WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
-		"WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
-	};
 
-	String TileMap3[H] = {
-		"BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
-		"B             lr          lr            lr          lr           lr           lr           lr       C ",
-		"B             lr          lr            lr          lr           lr           lr           lr       C ",
-		"B             lr          lr            lr          lr           lr           lr           lr       C ",
-		"B             lr          lr            lr          lr           LR           lr           lr       C ",
-		"B             LR          lr            lr          LR                        lr           lr       C ",
-		"B                         LR            lr                                    lr           LR       C ",
-		"B                                       lr                                    LR                    C ",
-		"B                                       lr                                                          C ",
-		"B                                       LR                                                          C ",
-		"B                                                                                                   C ",
-		"B                                                                ZX                                 C ",
-		"B             ZX                                    ZX           lr                                 C ",
-		"B             lr          ZX                        lr           lr                        ZX       C ",
-		"B             lr          lr                        lr           lr           ZX           lr       C ",
-		"B             lr          lr                        lr           lr           lr           lr       C ",
-		"B             lr          lr            ZX          lr           lr           lr           lr       C ",
-		"B             lr          lr            lr          lr           lr           lr           lr       C ",
-		"B             lr          lr            lr          lr           lr           lr           lr       C ",
-		"QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ",
-		"WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
-		"WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
-	};
+void generate_map(){
 
-	String TileMap4[H] = {
-		"BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
-		"B             lr          lr            lr          lr           lr           lr           lr       C ",
-		"B             lr          lr            lr          lr           lr           lr           lr       C ",
-		"B             lr          lr            lr          lr           lr           lr           lr       C ",
-		"B             lr          lr            lr          lr           LR           lr           lr       C ",
-		"B             LR          lr            lr          LR                        lr           lr       C ",
-		"B                         LR            LR                                    lr           LR       C ",
-		"B                                                                             LR                    C ",
-		"B                                                                                                   C ",
-		"B                                                                                                   C ",
-		"B                                                                                                   C ",
-		"B                                                                ZX                                 C ",
-		"B             ZX                                    ZX           lr                                 C ",
-		"B             lr          ZX            ZX          lr           lr                        ZX       C ",
-		"B             lr          lr            lr          lr           lr           ZX           lr       C ",
-		"B             lr          lr            lr          lr           lr           lr           lr       C ",
-		"B             lr          lr            lr          lr           lr           lr           lr       C ",
-		"B             lr          lr            lr          lr           lr           lr           lr       C ",
-		"B             lr          lr            lr          lr           lr           lr           lr       C ",
-		"QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ",
-		"WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
-		"WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
-	};
+	String B = L"BBBBBBBBBBB";
+	String lr = L"        lr";
+	String LR = L"         LR";
+	String ZX = L"         ZX";
+	String Q = L"QQQQQQQQQQQ";
+	String W2 = L"WWWWWWWWWWW";
 
-	String TileMap5[H] = {
-		"BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
-		"B             lr          lr            lr          lr           lr           lr           lr       C ",
-		"B             lr          LR            lr          lr           lr           lr           lr       C ",
-		"B             lr                        lr          lr           lr           lr           lr       C ",
-		"B             lr                        lr          lr           LR           lr           lr       C ",
-		"B             LR                        lr          LR                        lr           lr       C ",
-		"B                                       lr                                    lr           LR       C ",
-		"B                                       lr                                    LR                    C ",
-		"B                                       lr                                                          C ",
-		"B                         ZX            LR                                                          C ",
-		"B                         lr                                                                        C ",
-		"B                         lr                                     ZX                                 C ",
-		"B             ZX          lr                        ZX           lr                                 C ",
-		"B             lr          lr                        lr           lr                        ZX       C ",
-		"B             lr          lr                        lr           lr           ZX           lr       C ",
-		"B             lr          lr                        lr           lr           lr           lr       C ",
-		"B             lr          lr            ZX          lr           lr           lr           lr       C ",
-		"B             lr          lr            lr          lr           lr           lr           lr       C ",
-		"B             lr          lr            lr          lr           lr           lr           lr       C ",
-		"QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ",
-		"WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
-		"WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
-	};
+	int order = rand() % 7 + 2;
 
-	String TileMap6[H] = {
-		"BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
-		"B             lr          lr            lr          lr           lr           lr           lr       C ",
-		"B             lr          lr            lr          lr           lr           lr           lr       C ",
-		"B             lr          lr            lr          lr           lr           lr           lr       C ",
-		"B             lr          lr            lr          lr           LR           lr           lr       C ",
-		"B             LR          lr            lr          LR                        lr           lr       C ",
-		"B                         LR            lr                                    lr           LR       C ",
-		"B                                       lr                                    LR                    C ",
-		"B                                       lr                                                          C ",
-		"B                                       LR                                                          C ",
-		"B                                                                                                   C ",
-		"B                                                                ZX                                 C ",
-		"B             ZX                                    ZX           lr                                 C ",
-		"B             lr          ZX                        lr           lr                        ZX       C ",
-		"B             lr          lr                        lr           lr           ZX           lr       C ",
-		"B             lr          lr                        lr           lr           lr           lr       C ",
-		"B             lr          lr            ZX          lr           lr           lr           lr       C ",
-		"B             lr          lr            lr          lr           lr           lr           lr       C ",
-		"B             lr          lr            lr          lr           lr           lr           lr       C ",
-		"QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ",
-		"WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
-		"WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
-	};
+	W += 11;
 
-	String TileMap7[H] = {
-		"BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
-		"B             lr          lr            lr          lr           lr           lr           lr       C ",
-		"B             lr          lr            lr          lr           lr           lr           lr       C ",
-		"B             lr          lr            lr          lr           lr           lr           lr       C ",
-		"B             lr          lr            lr          lr           LR           lr           lr       C ",
-		"B             LR          lr            lr          LR                        lr           lr       C ",
-		"B                         LR            lr                                    lr           LR       C ",
-		"B                                       lr                                    LR                    C ",
-		"B                                       lr                                                          C ",
-		"B                                       LR                                                          C ",
-		"B                                                                                                   C ",
-		"B                                                                ZX                                 C ",
-		"B             ZX                                    ZX           lr                                 C ",
-		"B             lr          ZX                        lr           lr                        ZX       C ",
-		"B             lr          lr                        lr           lr           ZX           lr       C ",
-		"B             lr          lr                        lr           lr           lr           lr       C ",
-		"B             lr          lr            ZX          lr           lr           lr           lr       C ",
-		"B             lr          lr            lr          lr           lr           lr           lr       C ",
-		"B             lr          lr            lr          lr           lr           lr           lr       C ",
-		"QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ",
-		"WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
-		"WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
-	};
+	TileMap[0]  += B.toUtf32();
 
-	String TileMap8[H] = {
-		"BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
-		"B             lr          lr            lr          lr           lr           lr           lr       C ",
-		"B             lr          lr            lr          lr           lr           lr           lr       C ",
-		"B             lr          lr            lr          lr           lr           lr           lr       C ",
-		"B             lr          lr            lr          lr           LR           lr           lr       C ",
-		"B             LR          lr            lr          LR                        lr           lr       C ",
-		"B                         LR            lr                                    lr           lr       C ",
-		"B                                       lr                                    LR           lr       C ",
-		"B                                       lr                                                 lr       C ",
-		"B                                       LR                                                 lr       C ",
-		"B                                                                                          lr       C ",
-		"B                                                                ZX                        LR       C ",
-		"B             ZX                                    ZX           lr                                 C ",
-		"B             lr          ZX                        lr           lr                                 C ",
-		"B             lr          lr                        lr           lr           ZX                    C ",
-		"B             lr          lr                        lr           lr           lr                    C ",
-		"B             lr          lr            ZX          lr           lr           lr                    C ",
-		"B             lr          lr            lr          lr           lr           lr                    C ",
-		"B             lr          lr            lr          lr           lr           lr           ZX       C ",
-		"QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ",
-		"WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
-		"WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
-	};
+	for (int i=1; i<21; i++)
+	{
+		if (i != order || i != 19 || i != 20 || i != 21){
+			TileMap[i] += lr.toUtf32();
+		} 
+		else if (i == order){
+			TileMap[order] += LR.toUtf32();
+			TileMap[order+7] += ZX.toUtf32();
+			i+=7;
+		}
 
-	String TileMap9[H] = {
-		"BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
-		"B             lr          lr            lr          lr           lr           lr           lr       C ",
-		"B             lr          lr            lr          lr           lr           lr           lr       C ",
-		"B             lr          lr            lr          lr           lr           lr           lr       C ",
-		"B             lr          lr            lr          lr           LR           lr           lr       C ",
-		"B             LR          lr            lr          LR                        lr           lr       C ",
-		"B                         LR            lr                                    lr           LR       C ",
-		"B                                       lr                                    LR                    C ",
-		"B                                       lr                                                          C ",
-		"B                                       LR                                                          C ",
-		"B                                                                                                   C ",
-		"B                                                                ZX                                 C ",
-		"B             ZX                                    ZX           lr                                 C ",
-		"B             lr          ZX                        lr           lr                        ZX       C ",
-		"B             lr          lr                        lr           lr           ZX           lr       C ",
-		"B             lr          lr                        lr           lr           lr           lr       C ",
-		"B             lr          lr            ZX          lr           lr           lr           lr       C ",
-		"B             lr          lr            lr          lr           lr           lr           lr       C ",
-		"B             lr          lr            lr          lr           lr           lr           lr       C ",
-		"QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ",
-		"WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
-		"WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
-	};
+		if (i == 19) TileMap[i] += Q.toUtf32();
+		if (i == 20 || i == 21) TileMap[i] += W2.toUtf32();
+	}
+	
 
-	String TileMap10[H] = {
-		"BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
-		"B             lr          lr            lr          lr           lr           lr           lr       C ",
-		"B             lr          lr            lr          lr           lr           lr           lr       C ",
-		"B             lr          lr            lr          lr           lr           lr           lr       C ",
-		"B             lr          lr            lr          lr           LR           lr           lr       C ",
-		"B             LR          lr            lr          LR                        lr           lr       C ",
-		"B                         LR            lr                                    lr           LR       C ",
-		"B                                       lr                                    LR                    C ",
-		"B                                       lr                                                          C ",
-		"B                                       LR                                                          C ",
-		"B                                                                                                   C ",
-		"B                                                                ZX                                 C ",
-		"B             ZX                                    ZX           lr                                 C ",
-		"B             lr          ZX                        lr           lr                        ZX       C ",
-		"B             lr          lr                        lr           lr           ZX           lr       C ",
-		"B             lr          lr                        lr           lr           lr           lr       C ",
-		"B             lr          lr            ZX          lr           lr           lr           lr       C ",
-		"B             lr          lr            lr          lr           lr           lr           lr       C ",
-		"B             lr          lr            lr          lr           lr           lr           lr       C ",
-		"QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ",
-		"WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
-		"WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
-	};
+
+}
+
+
+
 
 	// C - уровень пройден
 
@@ -298,20 +111,21 @@ public:
 		if (detection_pipe_old == true && (Tile[1][pos_X] == ' ' || Tile[19][pos_X] == ' ')){
 			num_points += 1;
 			point.play();
+			generate_map();
 		}
 		detection_pipe_old = detection_pipe;
 	}
 
 	void get_points(Sprite &s, bool con);
 
-	void dlinna_map() {
+	/*void dlinna_map() {
 		int h;
 		for (int i = 0; Tile[2][i] != 'C'; i++) {
 			W = i+3; }
 		std::cout << "W = " << W << std::endl;
-	}
+	}*/
 
 } 
 // в фигурных скобках перечень карт, их количесво должно соответсвовать с num_maps
 // num_maps можно увеличивать
-level[num_maps] = {TileMap, TileMap2,TileMap3,TileMap4,TileMap5,TileMap6,TileMap7,TileMap8,TileMap9,TileMap10};
+level[num_maps] = {TileMap};

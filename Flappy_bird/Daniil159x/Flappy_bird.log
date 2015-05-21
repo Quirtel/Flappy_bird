@@ -1,17 +1,17 @@
-﻿Сборка начата 21.05.2015 20:12:52.
-     1>Проект "C:\Users\Raiden\Flappy_bird\Flappy_bird\Flappy_bird.vcxproj" в узле 2 (целевые объекты build).
+﻿Построение начато 21.05.2015 22:18:17.
+     1>Проект "D:\Данено\Проекты\Flappy_bird\Flappy_bird\Flappy_bird\Flappy_bird.vcxproj" в узле 2 (целевые объекты build).
      1>InitializeBuildStatus:
          Создание "Daniil159x\Flappy_bird.unsuccessfulbuild", так как было задано "AlwaysCreate".
        ClCompile:
          Для всех выходных данных обновления не требуется.
        Link:
          Для всех выходных данных обновления не требуется.
-         Flappy_bird.vcxproj -> C:\Users\Raiden\Flappy_bird\Daniil159x\Flappy_bird.exe
+         Flappy_bird.vcxproj -> D:\Данено\Проекты\Flappy_bird\Flappy_bird\Daniil159x\Flappy_bird.exe
        FinalizeBuildStatus:
          Файл "Daniil159x\Flappy_bird.unsuccessfulbuild" удаляется.
          Обращение к "Daniil159x\Flappy_bird.lastbuildstate".
-     1>Построение проекта "C:\Users\Raiden\Flappy_bird\Flappy_bird\Flappy_bird.vcxproj" завершено (целевые объекты build).
+     1>Построение проекта "D:\Данено\Проекты\Flappy_bird\Flappy_bird\Flappy_bird\Flappy_bird.vcxproj" завершено (целевые объекты build).
 
 Построение успешно завершено.
 
-Затраченное время: 00:00:00.04
+Затраченное время: 00:00:00.16

@@ -6,7 +6,7 @@
 using namespace sf;
 
 const int H = 22; // высота
-int W = 102; // длина
+int W = 89; // длина
 
 const int num_maps = 1;
 bool detection_pipe;
@@ -29,70 +29,77 @@ bool detection_pipe_old = false;
 */
 
 String TileMap[H] = {
-		L"BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
-		L"B             lr          lr            lr          lr           lr           lr           lr             ",
-		L"B             lr          lr            lr          lr           lr           lr           lr             ",
-		L"B             lr          lr            lr          lr           lr           lr           LR             ",
-		L"B             lr          lr            LR          lr           LR           lr                          ",
-		L"B             LR          lr                        LR                        lr                          ",
-		L"B                         lr                                                  lr                          ",
-		L"B                         lr                                                  LR                          ",
-		L"B                         lr                                                                              ",
-		L"B                         LR                                                                              ",
-		L"B                                                                                          ZX             ",
-		L"B                                       ZX                       ZX                        lr             ",
-		L"B             ZX                        lr          ZX           lr                        lr             ",
-		L"B             lr                        lr          lr           lr                        lr             ",
-		L"B             lr                        lr          lr           lr           ZX           lr             ",
-		L"B             lr                        lr          lr           lr           lr           lr             ",
-		L"B             lr          ZX            lr          lr           lr           lr           lr             ",
-		L"B             lr          lr            lr          lr           lr           lr           lr             ",
-		L"B             lr          lr            lr          lr           lr           lr           lr             ",
-		L"QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ",
-		L"WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
-		L"WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
+		 "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
+		 "B             lr          lr            lr          lr           lr           lr           lr",
+		 "B             lr          lr            lr          lr           lr           lr           lr",
+		 "B             lr          lr            lr          lr           lr           lr           LR",
+		 "B             lr          lr            LR          lr           LR           lr             ",
+		 "B             LR          lr                        LR                        lr             ",
+		 "B                         lr                                                  lr             ",
+		 "B                         lr                                                  LR             ",
+		 "B                         lr                                                                 ",
+		 "B                         LR                                                                 ",
+		 "B                                                                                          ZX",
+		 "B                                       ZX                       ZX                        lr",
+		 "B             ZX                        lr          ZX           lr                        lr",
+		 "B             lr                        lr          lr           lr                        lr",
+		 "B             lr                        lr          lr           lr           ZX           lr",
+		 "B             lr                        lr          lr           lr           lr           lr",
+		 "B             lr          ZX            lr          lr           lr           lr           lr",
+		 "B             lr          lr            lr          lr           lr           lr           lr",
+		 "B             lr          lr            lr          lr           lr           lr           lr",
+		 "QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ",
+		 "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
+		 "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
 	};
 
 
 
 void generate_map(){
 
-	String B = L"BBBBBBBBBBB";
-	String lr = L"        lr";
-	String LR = L"         LR";
-	String ZX = L"         ZX";
-	String Q = L"QQQQQQQQQQQ";
-	String W2 = L"WWWWWWWWWWW";
+	String B = "BBBBBBBBBBB";
+	String lr = "         lr";
+	String LR = "         LR";
+	String ZX = "         ZX";
+	String Q = "QQQQQQQQQQQ";
+	String W2 = "WWWWWWWWWWW";
+	String empty_str = "           ";
 
 	int order = rand() % 7 + 2;
 
 	W += 11;
 
-	TileMap[0]  += B.toUtf32();
-
-	for (int i=1; i<21; i++)
-	{
-		if (i != order || i != 19 || i != 20 || i != 21){
-			TileMap[i] += lr.toUtf32();
-		} 
-		else if (i == order){
-			TileMap[order] += LR.toUtf32();
-			TileMap[order+7] += ZX.toUtf32();
-			i+=7;
-		}
-
-		if (i == 19) TileMap[i] += Q.toUtf32();
-		if (i == 20 || i == 21) TileMap[i] += W2.toUtf32();
-	}
+	TileMap[0]  += B;
 	
+	int control;
 
 
+	// цикл верхней колонны
+	for (int j = 1; j < order; j++){
+		TileMap[j] += lr;
+		control = j;
+	}
+	TileMap[order] += LR;
+	
+	// цикл пустоты
+	for (int j = order+1; j < (control + 7); j++) {
+		TileMap[j] += empty_str;
+	}
+	control += 7;
+
+	// цикл нижней колонны
+	TileMap[control] += ZX;
+	control ++;
+	for (int j = control; j <= 18; j++){
+		TileMap[j] += lr;
+	}
+
+	// нижняя платформа
+	TileMap[19] += Q;
+	TileMap[20] += W2;
+	TileMap[21] += W2;
 }
 
-
-
-
-	// C - уровень пройден
 
 class map {
 public:
@@ -117,13 +124,6 @@ public:
 	}
 
 	void get_points(Sprite &s, bool con);
-
-	/*void dlinna_map() {
-		int h;
-		for (int i = 0; Tile[2][i] != 'C'; i++) {
-			W = i+3; }
-		std::cout << "W = " << W << std::endl;
-	}*/
 
 } 
 // в фигурных скобках перечень карт, их количесво должно соответсвовать с num_maps

@@ -36,19 +36,6 @@ Texture t;
 Texture t2;
 
 
-/*
-void infinity(){
-for (int i = 0;; i++) // по Х
-for (int j = 0;; j++)
-//level[]
-}
-*/
-
-	
-
-
-
-
 void map::get_points(Sprite &s, bool con){
 
 	switch (num_points / 10){
@@ -291,8 +278,6 @@ void tabl(Sprite &s){
 
 bool algorithm_gemas (){
 
-	//level[c_lvl].dlinna_map();
-
 	player bird(t);
 
 	window.create(VideoMode(length_win, height_win), "Flappy Bird " + vers + " - Game");
@@ -375,8 +360,7 @@ bool algorithm_gemas (){
 				bird.dy = 0.25;
 			}
 
-
-			if (offsetX < 102*bit-length_win) {offsetX = bird.rect.left;}
+			offsetX = bird.rect.left;
 
 			bird.update(time); 
 		}

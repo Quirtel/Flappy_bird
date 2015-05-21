@@ -1,4 +1,6 @@
 #include <SFML\Graphics.hpp>
+#include <SFML\Audio.hpp>
+#include <SFML\Audio\Sound.hpp>
 #include <string>
 #include "maps.h"
 #include <iostream>
@@ -12,7 +14,10 @@ int height_win = 244;
 int length_win = 800;
 int ground = 227;
 
-float offsetX = 0;
+
+
+
+float offsetX = 4.0;
 int start_p_x = 50;
 int start_p_y = 114;
 bool key_pressed = false;
@@ -39,6 +44,8 @@ for (int j = 0;; j++)
 }
 */
 
+	
+
 
 
 
@@ -55,7 +62,7 @@ void map::get_points(Sprite &s, bool con){
 	case 7: {s.setTextureRect(IntRect(181,157,14,20));break;}
 	case 8: {s.setTextureRect(IntRect(181,179,14,20));break;}
 	case 9: {s.setTextureRect(IntRect(181,201,14,20));break;}
-	default: std::cout << "Message from handler points: ERORR get points 1" << std::endl;
+	default: std::cout << "Message from handler points: ERROR get points 1" << std::endl;
 	}
 	if (con == true){	s.setPosition(30,20);}
 	else{	s.setPosition(75+start_p_x, 70);}
@@ -72,7 +79,7 @@ void map::get_points(Sprite &s, bool con){
 	case 7: {s.setTextureRect(IntRect(181,157,14,20));break;}
 	case 8: {s.setTextureRect(IntRect(181,179,14,20));break;}
 	case 9: {s.setTextureRect(IntRect(181,201,14,20));break;}
-	default: std::cout << "Message from handler points: ERORR get points 2" << std::endl;
+	default: std::cout << "Message from handler points: ERROR get points 2" << std::endl;
 	}
 	if (con == true){	s.setPosition(30+15,20); }
 	else {	s.setPosition(75+15+start_p_x, 70);}
@@ -91,6 +98,7 @@ public:
 	bool level_passed; // контроль пройденного уровня
 
 
+	
 	//-------------------------
 	player(Texture &image){
 		sprite.setTexture(image);
@@ -104,7 +112,6 @@ public:
 		start_p_y = 114;
 		offsetX = 0;
 	}
-
 
 	//**************************
 	void update(float time){
@@ -167,6 +174,8 @@ public:
 	//*********************
 	void CollisionY(float p) {
 
+		
+
 		int X1 = (rect.left+start_p_x) / bit;
 		int Y1 = rect.top / bit;
 		int X2 = (rect.left  + start_p_x + bit) / bit;
@@ -183,6 +192,7 @@ public:
 			level[c_lvl].Tile[Y1][X1] == 'R' || level[c_lvl].Tile[Y1][X1] == 'Z' || level[c_lvl].Tile[Y1][X1] == 'X' ||
 			level[c_lvl].Tile[Y1][X1] == 'Q'){
 				std::cout << "Message from handler collosion: Collision point (X1; Y1) " << std::endl;
+				die.play();
 				rect.top = p;
 				death_p = false;
 		}
@@ -190,6 +200,7 @@ public:
 			level[c_lvl].Tile[Y2][X2] =='R' ||level[c_lvl].Tile[Y2][X2] == 'Z' || level[c_lvl].Tile[Y2][X2] == 'X' || 
 			level[c_lvl].Tile[Y2][X2] =='Q') {
 				std::cout << "Message from handler collosion: Collision point (X2; Y2) " << std::endl;
+				die.play();
 				rect.top = p;
 				death_p = false;
 		}
@@ -197,6 +208,7 @@ public:
 			level[c_lvl].Tile[Y3][X3] =='R' ||level[c_lvl].Tile[Y3][X3] == 'Z' || level[c_lvl].Tile[Y3][X3] == 'X' || 
 			level[c_lvl].Tile[Y3][X3] =='Q') {
 				std::cout << "Message from handler collosion: Collision point (X3; Y3) " << std::endl;
+				die.play();
 				rect.top = p;
 				death_p = false;
 		}
@@ -204,6 +216,7 @@ public:
 			level[c_lvl].Tile[Y4][X4] =='R' ||level[c_lvl].Tile[Y4][X4] == 'Z' || level[c_lvl].Tile[Y4][X4] == 'X' || 
 			level[c_lvl].Tile[Y4][X4] =='Q') {
 				std::cout << "Message from handler collosion: Collision point (X4; Y4) " << std::endl;
+				die.play();
 				rect.top = p;
 				death_p = false;
 		}
@@ -228,7 +241,6 @@ bool menu (){
 	bool c_close = true;
 	while (window.isOpen()){
 
-
 		Event event;
 		while (window.pollEvent(event))
 		{
@@ -242,7 +254,7 @@ bool menu (){
 
 
 		}
-
+	
 		tile_1.setTextureRect(IntRect(4,50,142,250));
 		tile_1.setPosition(0,0);
 		window.draw(tile_1);
@@ -279,6 +291,9 @@ void tabl(Sprite &s){
 
 
 bool algorithm_gemas (){
+
+	wing.play();
+
 	level[c_lvl].dlinna_map();
 
 	player bird(t);
@@ -343,9 +358,10 @@ bool algorithm_gemas (){
 				if (Keyboard::isKeyPressed(Keyboard::Up) == true && key_pressed == false ){ 
 					bird.dy = -0.2;
 					key_pressed = true;
+					wing.play();
 				}
 
-				if (Keyboard::isKeyPressed(Keyboard::Up) == false){ 
+				if (Keyboard::isKeyPressed(Keyboard::Up) == false){
 					key_pressed = false;
 				}
 				if (Keyboard::isKeyPressed(Keyboard::LControl)){
@@ -411,6 +427,9 @@ bool algorithm_gemas (){
 			ready.setTextureRect(IntRect(3,143,86,21));
 			ready.setPosition(start_p_x+20,start_p_y-60);
 			window.draw(ready);
+			wing.openFromFile("sfx_wing.ogg");
+			die.openFromFile("sfx_hit.ogg");
+			point.openFromFile("sfx_point.ogg");
 
 		}
 
@@ -440,7 +459,6 @@ bool algorithm_gemas (){
 
 		old_start = start;
 	}
-
 	level[c_lvl].num_points = 0;
 
 	return control_start;
